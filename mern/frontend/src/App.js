@@ -7,7 +7,7 @@ import Footer from './Footer';
 
 function App() {
   const state = {
-    name: '박선영',
+    name: '체리🍒LOVER 선영><',
     age: 22,
     hobby: '드럼 치기',
     major: 'DIS',
