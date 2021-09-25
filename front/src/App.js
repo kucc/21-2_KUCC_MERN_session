@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-import Signup from './components/passwordCheck';
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
           Learn React
         </a>
       </header>
-      <Signup />
     </div>
   );
 }
