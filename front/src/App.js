@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Body from "./Body";
+import Footer from "./Footer";
+import Header from "./Header";
 
 function App() {
+  const state = {
+    name: "강태웅",
+    age: 22,
+    hobby: "춤추기, 더보이즈, 노래듣기, 보석십자수",
+    contact: "mail: sag06078@naver.com, phone: 010-8628-8084",
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header name={state.name} age={state.age} />
+      <Body age={state.age} hobby={state.hobby} />
+      <Footer contact={state.contact} />
     </div>
   );
 }
