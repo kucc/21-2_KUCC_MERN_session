@@ -1,4 +1,5 @@
 const express = require('express');
+
 const cors = require('cors');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -10,6 +11,7 @@ const morgan = require('morgan');
 const path = require('path');
 const redis = require('redis');
 const RedisStore = require('connect-redis')(session);
+const logger = require('./logger');
 
 dotenv.config();
 const redisClient = redis.createClient({
@@ -21,6 +23,7 @@ const { sequelize } = require('./models');
 const passportConfig = require('./passport');
 
 const app = express();
+const port = 5000;
 sequelize.sync({ force: false })
   .then(() => {
     console.log('db 연결 성공');
@@ -34,7 +37,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(helmet({ contentSecurityPolicy: false }));
   app.use(hpp());
   app.use(cors({
-    origin: '', // 프론트 서버 주소 적어주기
+    origin: '',   // 배포시 프론트 주소 적어주기
     credentials: true,
   }));
 } else {
@@ -52,12 +55,12 @@ const sessionOption = {
   resave: false,
   saveUninitialized: false,
   secret: process.env.COOKIE_SECRET,
-  // proxy: true,   배포할 때 이걸로 바꿔주기
+  // proxy: true,
   cookie: {
     httpOnly: true,
     secure: false,
-    // secure: true,    배포할 때 이걸로 바꿔주기
-    domain: process.env.NODE_ENV === 'production' && '',       // 배포할 때 프론트 서버주소 적어주기
+    // secure: true,
+    domain: process.env.NODE_ENV === 'production' && '.', // 배포 시에 프론트 주소 적어주기
   },
   store: new RedisStore({ client: redisClient }),
 };
@@ -66,7 +69,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/', (req, res) => {
-  res.send('hello express');
+  res.status(200).send('Hello Node!');
 });
 app.use('/user', userRouter);
 
@@ -74,6 +77,8 @@ app.use('/user', userRouter);
 app.use((req, res, next) => {
   const error =  new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
   error.status = 404;
+  logger.info('hello');
+  logger.error(error.message);
   next(error);
 });
 
@@ -87,6 +92,6 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-app.listen(3065, () => {
-  console.log('서버 실행 중!');
+app.listen(port, () => {
+  console.log(`${port}번 서버 실행 중!`);
 });

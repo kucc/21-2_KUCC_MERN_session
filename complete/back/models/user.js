@@ -4,18 +4,39 @@ const Sequelize = require('sequelize');
 module.exports = class User extends Sequelize.Model {
   static init(sequelize) {
     return super.init({
-      email: {
-        type: Sequelize.STRING(40),
-        allowNull: true,
-        unique: true,
-      },
       name: {
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING(50),
         allowNull: false,
       },
+      email: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+        trim: true,
+        unique: true,
+      },
       password: {
-        type: Sequelize.STRING(100),
-        allowNull: true,
+        type: Sequelize.STRING,
+        min: {
+            args: [5],
+            msg: 'Minimum 5 password Length required',
+        },
+        allowNull: false,
+      },
+      lastname: {
+        type: Sequelize.STRING(50),
+      },
+      role: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+      },
+      image: {
+        type: Sequelize.STRING,
+      },
+      token: {
+        type: Sequelize.STRING,
+      },
+      tokenExp: {
+        type: Sequelize.INTEGER,
       },
     }, {
       sequelize,
