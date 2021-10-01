@@ -1,9 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/node
-# Edit at https://www.toptal.com/developers/gitignore?templates=node
-
-#uploads
-uploads
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,yarn,react,node
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,yarn,react,node
 
 ### Node ###
 # Logs
@@ -48,16 +45,7 @@ build/Release
 
 # Dependency directories
 node_modules/
-연습/
 jspm_packages/
-react-nodebird-master/
-
-# rootkey.csv
-rootkey.csv
-
-# pem
-*.pem
-reactSNS.pem
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
@@ -134,4 +122,53 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# End of https://www.toptal.com/developers/gitignore/api/node
+### Node Patch ###
+# Serverless Webpack directories
+.webpack/
+
+### react ###
+.DS_*
+**/*.backup.*
+**/*.back.*
+
+node_modules
+
+*.sublime*
+
+psd
+thumb
+sketch
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+### yarn ###
+# https://yarnpkg.com/advanced/qa#which-files-should-be-gitignored
+
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# if you are NOT using Zero-installs, then:
+# comment the following lines
+!.yarn/cache
+
+# and uncomment the following lines
+# .pnp.*
+
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,yarn,react,node
