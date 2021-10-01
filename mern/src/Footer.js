@@ -1,8 +1,8 @@
-function Footer() {
+function Footer({ email }) {
   return (
     <>
       {/* contact information */}
-      <div>E-mail: jiyouleehome@gmail.com 😉</div>
+      <div>E-mail: {email} 😉</div>
     </>
   );
 }
