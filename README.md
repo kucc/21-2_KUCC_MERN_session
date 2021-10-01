@@ -1,2 +1,1 @@
-# 21-2_MERN_session
-21-2 MERN 세션
+# 21-2 KUCC MERN Session (Branch 이지유)
