@@ -58,7 +58,7 @@ router.post('/signup', isNotLoggedIn, async (req, res, next) => {    // POST /us
 });
 
 // eslint-disable-next-line no-unused-vars
-router.post('/logout', isLoggedIn, (req, res, next) => {
+router.post('/logout', (req, res, next) => {
   req.logout();
   req.session.destroy();
   res.send('ok');
