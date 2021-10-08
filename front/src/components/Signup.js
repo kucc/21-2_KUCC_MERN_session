@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Input, Checkbox, Button, Modal, Form } from "antd";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const ErrorMessage = styled.div`
   color: red;
@@ -25,21 +25,31 @@ const Signup = () => {
   const [term, setTerm] = useState("");
   const [termError, setTermError] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (user.password !== passwordCheck) {
       return setPasswordError(true);
     }
     if (!term) {
       return setTermError(true);
     }
-    axios.post("/user/signup", user);
+    const { data } = await axios.post(
+      "http://localhost:3065/user/signup",
+      user
+    );
+    if (data) {
+      setSuccess(true);
+    }
+    // console.log(data);
   };
+
+  if (success) return <Redirect to="/login" />;
 
   const onChangePasswordCheck = (e) => {
     setPasswordCheck(e.target.value);

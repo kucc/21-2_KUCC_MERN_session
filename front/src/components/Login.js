@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { Input, Button, Form } from "antd";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const initialUser = {
   email: "",
@@ -10,15 +10,23 @@ const initialUser = {
 
 const Login = () => {
   const [user, setUser] = useState(initialUser);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = () => {
-    axios.post("/user/login", user);
+  const handleSubmit = async () => {
+    console.log(user);
+    const { data } = await axios.post("http://localhost:3065/user/login", user);
+    // console.log(data);
+    if (data) {
+      localStorage.setItem("id", data.id);
+      setSuccess(true);
+    }
   };
+  if (success) return <Redirect to="/" />;
 
   return (
     <div>
@@ -26,7 +34,7 @@ const Login = () => {
         <h1>HOME</h1>
       </Link>
       <h2>로그인</h2>
-      <Form onSubmit={handleSubmit}>
+      <Form onFinish={handleSubmit}>
         <div>
           <label>이메일</label>
           <Input
@@ -47,7 +55,9 @@ const Login = () => {
             value={user.password}
           />
         </div>
-        <Button type="submit">로그인</Button>
+        <Button type="primary" htmlType="submit">
+          로그인
+        </Button>
       </Form>
     </div>
   );
