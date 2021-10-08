@@ -5,9 +5,12 @@ const Title = styled.h1`
 	color: #1d6495;
 `;
 
-const Header = () => {
-	const state = { title: '21-2 MERN SESSION' };
-	return <Title>{state.title}</Title>;
+interface Props {
+	title: string;
+}
+
+const Header = ({ title }: Props) => {
+	return <Title>{title}</Title>;
 };
 
 export default Header;
