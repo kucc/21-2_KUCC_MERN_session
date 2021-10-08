@@ -3,13 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import Home from "./Home";
-import About from "./About";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Board from "./components/Board";
+import "antd/dist/antd.css";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -17,13 +15,14 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/">
           <App />
-          </Route>
-        <Route exact path="/home">
-          <Home />
         </Route>
-        <Route path="/about">
-          <About />
+        <Route path="/login">
+          <Login />
         </Route>
+        <Route path="/signup">
+          <Signup />
+        </Route>
+        <Route path="/board" component={Board} />
       </Switch>
     </Router>
   </React.StrictMode>,

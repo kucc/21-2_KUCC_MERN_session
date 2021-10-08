@@ -1,33 +1,23 @@
 import "./App.css";
-import Body from "./Body";
-import Footer from "./Footer";
-import Header from "./Header";
-import { useState } from "react";
-import Input from "./Input";
 import { Link } from "react-router-dom";
 
 function App() {
-  const state = {
-    name: "강태웅",
-    age: 22,
-    hobby: "춤추기, 더보이즈, 노래듣기, 보석십자수",
-    contact: "mail: sag06078@naver.com, phone: 010-8628-8084",
-  };
-  const [greeting, setGreeting] = useState("안녕");
-  const handleChange = (event) => setGreeting(event.target.value); //이렇게 함수를 빼서 사용가능
-
   return (
     <div>
+      <Link style={{ textDecoration: "none" }} to="/">
+        <h1>HOME</h1>
+      </Link>
       <nav>
         <ul>
           <li>
-            <Link to="/home">Home</Link>
+            <Link to="/login">로그인</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/signup">회원가입</Link>
           </li>
         </ul>
       </nav>
+      <Link to="/board"> 게시판 바로가기 </Link>
     </div>
   );
 }
