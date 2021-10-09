@@ -20,7 +20,7 @@ const Login = () => {
 
   const handleSubmit = async () => {
     console.log(user);
-    const { data } = await axios.post("http://localhost:3065/user/login", user);
+    const { data } = await axios.post("http://3.38.117.172/user/login", user);
     // console.log(data);
     if (data) {
       localStorage.setItem("id", data.id);

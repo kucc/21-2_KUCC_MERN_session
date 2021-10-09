@@ -7,7 +7,7 @@ import Header from "./components/Header";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("id"));
   const handleLogout = async () => {
-    const { data } = await axios.post("http://localhost:3065/user/logout");
+    const { data } = await axios.post("http://3.38.117.172/user/logout");
     console.log(data);
     localStorage.removeItem("id");
     setIsLoggedIn(false);
