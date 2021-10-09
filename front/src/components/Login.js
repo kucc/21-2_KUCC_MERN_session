@@ -1,7 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { Input, Button, Form, Col } from "antd";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import Header from "./Header";
 
 const initialUser = {
   email: "",
@@ -30,9 +31,7 @@ const Login = () => {
 
   return (
     <div>
-      <Link style={{ textDecoration: "none" }} to="/">
-        <h1>HOME</h1>
-      </Link>
+      <Header />
       <h2>로그인</h2>
       <Col span={12}>
         <Form onFinish={handleSubmit}>

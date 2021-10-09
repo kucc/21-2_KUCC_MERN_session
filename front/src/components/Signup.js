@@ -2,7 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { Input, Checkbox, Button, Modal, Form } from "antd";
 import styled from "styled-components";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import Header from "./Header";
 
 const ErrorMessage = styled.div`
   color: red;
@@ -22,7 +23,7 @@ const Signup = () => {
   const [user, setUser] = useState(initialUser);
   const [passwordCheck, setPasswordCheck] = useState("");
   const [passwordError, setPasswordError] = useState(false);
-  const [term, setTerm] = useState("");
+  const [term, setTerm] = useState(false);
   const [termError, setTermError] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -78,9 +79,7 @@ const Signup = () => {
 
   return (
     <div>
-      <Link style={{ textDecoration: "none" }} to="/">
-        <h1>HOME</h1>
-      </Link>
+      <Header />
       <h2>회원가입</h2>
       <Form onFinish={handleSubmit}>
         <div>
@@ -126,6 +125,8 @@ const Signup = () => {
             <ErrorMessage>비밀번호가 일치하지 않습니다.</ErrorMessage>
           )}
         </div>
+        <input />
+        <button>버튼</button>
         <div style={{ marginTop: "15px" }}>
           <Checkbox name="user-term" checked={term} onChange={onChangeTerm} />
           <Font onClick={showModal}>약관을 확인하려면 눌러주세요</Font>
