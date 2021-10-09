@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { User } from '../types/User';
 
 const Container = styled.div`
 	display: flex;
@@ -54,24 +55,32 @@ const SignUpButton = styled.button`
 `;
 
 const SignUpPage = () => {
-	const [name, setName] = useState('');
-	const [id, setId] = useState('');
-	const [password, setPassword] = useState('');
+	const [user, setUser] = useState<User>({ name: '', email: '', password: '' });
 
 	return (
 		<Container>
 			<h1>SignUp</h1>
 			<InputContainer>
 				<SignUpLabel>Name</SignUpLabel>
-				<SignUpInput value={name} onChange={(e) => setName(e.target.value)} />
+				<SignUpInput
+					value={user.name}
+					onChange={(e) => setUser({ ...user, name: e.target.value })}
+				/>
 			</InputContainer>
 			<InputContainer>
 				<SignUpLabel>ID</SignUpLabel>
-				<SignUpInput value={id} onChange={(e) => setId(e.target.value)} />
+				<SignUpInput
+					value={user.email}
+					onChange={(e) => setUser({ ...user, email: e.target.value })}
+				/>
 			</InputContainer>
 			<InputContainer>
 				<SignUpLabel>PW</SignUpLabel>
-				<SignUpInput value={password} onChange={(e) => setPassword(e.target.value)} />
+				<SignUpInput
+					type="password"
+					value={user.password}
+					onChange={(e) => setUser({ ...user, password: e.target.value })}
+				/>
 			</InputContainer>
 			<SignUpButton>signup</SignUpButton>
 		</Container>

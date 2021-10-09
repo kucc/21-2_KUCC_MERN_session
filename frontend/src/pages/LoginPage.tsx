@@ -46,15 +46,21 @@ const LoginButton = styled.button`
 `;
 
 const LoginPage = () => {
-	const [id, setId] = useState('');
+	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 
 	return (
 		<Container>
 			<h1>Login</h1>
-			<h5>Please enter your id & password</h5>
-			<LoginInput placeholder="id" value={id} onChange={(e) => setId(e.target.value)} />
+			<h5>Please enter your email & password</h5>
 			<LoginInput
+				type="email"
+				placeholder="email"
+				value={email}
+				onChange={(e) => setEmail(e.target.value)}
+			/>
+			<LoginInput
+				type="password"
 				placeholder="password"
 				value={password}
 				onChange={(e) => setPassword(e.target.value)}

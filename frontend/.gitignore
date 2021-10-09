@@ -51,7 +51,14 @@ sketch
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
+**/.idea/
+**/../.idea/
+
 # User-specific stuff
+.idea/**/prettier.xml
+.idea/**/vcs.xml
+.idea/**/inspectionProfiles
+.idea/**/codeStyles
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
