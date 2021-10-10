@@ -22,6 +22,7 @@ const { sequelize } = require('./models');
 const passportConfig = require('./passport');
 
 const app = express();
+app.set(process.env.PORT || 'port');
 sequelize.sync({ force: false })
   .then(() => {
     console.log('db 연결 성공');
@@ -35,7 +36,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(helmet({ contentSecurityPolicy: false }));
   app.use(hpp());
   app.use(cors({
-    origin: '', // 프론트 서버 주소 적어주기
+    origin: 'http://localhost:3000', // 프론트 서버 주소 적어주기
     credentials: true,
   }));
 } else {
@@ -58,7 +59,6 @@ const sessionOption = {
     httpOnly: true,
     secure: false,
     // secure: true,    배포할 때 이걸로 바꿔주기
-    domain: process.env.NODE_ENV === 'production' && '',       // 배포할 때 프론트 서버주소 적어주기
   },
   store: new RedisStore({ client: redisClient }),
 };
@@ -89,6 +89,6 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-app.listen(3065, () => {
-  console.log('서버 실행 중!');
+app.listen(app.get('port'), () => {
+  console.log(app.get('port'), '번 서버 실행 중!');
 });

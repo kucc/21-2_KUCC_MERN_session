@@ -41,7 +41,7 @@ const Signup = () => {
       return setTermError(true);
     }
     const { data } = await axios.post(
-      "http://localhost:3065/user/signup",
+      "http://3.38.117.172/user/signup",
       user
     );
     if (data) {
