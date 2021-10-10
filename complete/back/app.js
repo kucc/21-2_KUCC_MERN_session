@@ -17,6 +17,7 @@ const redisClient = redis.createClient({
   password: process.env.REDIS_PASSWORD,
 });
 const userRouter = require('./routes/user');
+const postRouter = require('./routes/post');
 const { sequelize } = require('./models');
 const passportConfig = require('./passport');
 
@@ -69,6 +70,7 @@ app.get('/', (req, res) => {
   res.send('hello express');
 });
 app.use('/user', userRouter);
+app.use('/post', postRouter);
 
 // 404처리 미들웨어
 app.use((req, res, next) => {
