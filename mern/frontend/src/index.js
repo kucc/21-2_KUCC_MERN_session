@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
+
 import Home from './Home';
+import SignUp from './SignUp';
 import About from './About';
+import Login from './Login';
+import Board from './Board';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -20,6 +23,15 @@ ReactDOM.render(
         </Route>
         <Route path="/about">
           <About />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/signup">
+          <SignUp />
+        </Route>
+        <Route path="/board">
+          <Board />
         </Route>
       </Switch>
     </Router>
