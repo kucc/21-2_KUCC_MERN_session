@@ -1,36 +1,40 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 // import logo from './logo.svg';
-import './App.css';
+import {Link} from 'react-router-dom';
+import "./App.css";
+//import axios from "axios";
 
-import Header from './Header';
-import Body from './Body';
-import Footer from './Footer';
-import Input from './Input';
 
-function App() {
-  const state = {
-    name: '박선영',
-    age: 22,
-    hobby: '드럼 치기',
-    major: 'DIS',
-    contact: 'ynnus411@naver.com',
-  };
-  const [greeting, setGreeting] = useState("이게 placeholder");
-  // setGreeting에 실행되는 순간 리렌더링, 함수 다시 호출, setGreeting한 값을 greeting에 대입한 후 return문 렌더링
-  const handleChange = event => setGreeting(event.target.value)
-  
+const App = () => {
   return (
-    <div className="App">
-      <Header name={state.name} />
-      <Body age={state.age} hobby={state.hobby} major={state.major} />
-      <Footer contact={state.contact} />
-      <Input
-            value={greeting}
-            onChange={handleChange}
-        />
-      <h1>{greeting}</h1>
+    <div>
+      <div className="homeTitle">
+        <h1>Welcome to my Homepage!</h1>
+      </div>
+      <div className="homeNavBox">
+        <nav className="homeNav">
+          <ul>
+            <li>
+              <Link className="homeLink" to="/">Home</Link>
+            </li>
+            <li>
+              <Link className="homeLink" to="/login">Login</Link>
+            </li>
+            <li>
+              <Link className="homeLink" to="/signup">SignUp</Link>
+            </li>
+            <li>
+              <Link className="homeLink" to="/about">About</Link>
+            </li>
+            <li>
+              <Link className="homeLink" to="/board">Board</Link>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
   );
-};
+}
+
 
 export default App;
