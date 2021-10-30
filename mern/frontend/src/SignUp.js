@@ -52,12 +52,26 @@ const Button = styled.div`
     font-weight: bold;
 `;
 
+/* const initialUser = {
+    name: "",
+    email: "",
+    password: "",
+}; */
+
 
 const SignUp = () => {
+    // const [user, setUser] = useState('initialUser');
     const [name, setName] = useState('');
 	const [id, setId] = useState('');
     const [password, setPassword] = useState('');
-    
+    const [passwordCheck, setPasswordCheck] = useState('');
+    // const [passwordError, setPasswordError] = useState(false);
+
+
+ /*    const handleSubmit = async () => {
+        const {name, value} = event.target;
+        setUser({})
+    } */
     const onChangeName = (e) => {
         setName(e.target.value);
     };
@@ -67,6 +81,9 @@ const SignUp = () => {
     const onChangePassword = (e) => {
         setPassword(e.target.value);
     };
+    const onChangePasswordCheck = (e) => {
+        setPasswordCheck(e.target.value);
+    };
 
 
     return(
@@ -74,31 +91,65 @@ const SignUp = () => {
             <div class="Title">
                 <h1>Sign up</h1>
             </div>
-            <div className="SignupBox">
-                <Container>
-                    <InnerContainer>
-                        <Label>Name</Label>
-                    </InnerContainer>
-                    <InnerContainer>
-                        <Input value={name} placeholder="이름" onChange={onChangeName} />
-                    </InnerContainer>
-                    <InnerContainer>
-                        <Label>ID</Label>
-                    </InnerContainer>
-                    <InnerContainer>
-                        <Input value={id} placeholder="ID" onChange={onChangeId} />
-                    </InnerContainer>
-                    <InnerContainer>
-                        <Label>Password</Label>
-                    </InnerContainer>
-                    <InnerContainer>
-                        <Input value={password} placeholder="비밀번호" onChange={onChangePassword} />
-                    </InnerContainer>
-                    <InnerContainer>
-                        <Button>Submit</Button>
-                    </InnerContainer>
-                </Container>
-            </div>
+                <div className="SignupBox">
+                    <Container>
+                        <InnerContainer>
+                            <Label>Name</Label>
+                        </InnerContainer>
+                        <InnerContainer>
+                            <Input 
+                                name="name"
+                                type="text"
+                                value={name}
+                                placeholder="이름"
+                                required
+                                onChange={onChangeName}
+                            />
+                        </InnerContainer>
+                        <InnerContainer>
+                            <Label>ID</Label>
+                        </InnerContainer>
+                        <InnerContainer>
+                            <Input 
+                                name="id"
+                                type="text"
+                                value={id} 
+                                placeholder="ID" 
+                                required
+                                onChange={onChangeId} />
+                        </InnerContainer>
+                        <InnerContainer>
+                            <Label>Password</Label>
+                        </InnerContainer>
+                        <InnerContainer>
+                            <Input 
+                                name="password"
+                                type="password"
+                                value={password} 
+                                placeholder="비밀번호" 
+                                required
+                                onChange={onChangePassword} />
+                        </InnerContainer>
+                        <InnerContainer>
+                            <Label>Password Check</Label>
+                        </InnerContainer>
+                        <InnerContainer>
+                            <Input 
+                                name="passwordCheck"
+                                type="password"
+                                value={passwordCheck} 
+                                placeholder="비밀번호 확인" 
+                                required
+                                onChange={onChangePasswordCheck} />
+                            {/* {passwordError && (
+                                <ErrorMessage>비밀번호가 일치하지 않습니다.</ErrorMessage>
+                            )} */}
+                        </InnerContainer>
+                        <InnerContainer>
+                            <Button>Submit</Button>
+                        </InnerContainer> 
+                    </Container>
+                </div>
         </>
     );
 };
