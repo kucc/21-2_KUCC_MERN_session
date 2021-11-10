@@ -8,11 +8,16 @@
     "start": "nodemon app"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "connect-redis": "^6.0.0",
     "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
     "express-session": "^1.17.2",
     "morgan": "^1.10.0",
-    "multer": "^1.4.3"
+    "multer": "^1.4.3",
+    "redis": "3.1.2",
+    "sequelize": "^6.9.0",
+    "sequelize-cli": "^6.3.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
